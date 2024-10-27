@@ -1,10 +1,10 @@
-package co.edu.unicauca.isii.proyecto_api_rest_revision.servicios;
+package co.edu.unicauca.isii.revision.servicios;
 
-import co.edu.unicauca.isii.proyecto_api_rest_revision.domain.Articulo;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.domain.Autor;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.domain.Revisor;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.fachadaservicios.DTO.ArticuloDTO;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.fachadaservicios.mapper.ArticuloMapper;
+import co.edu.unicauca.isii.revision.modelo.Articulo;
+import co.edu.unicauca.isii.revision.modelo.Autor;
+import co.edu.unicauca.isii.revision.modelo.Revisor;
+import co.edu.unicauca.isii.revision.fachadaservicios.DTO.ArticuloDTO;
+import co.edu.unicauca.isii.revision.fachadaservicios.mapper.ArticuloMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package co.edu.unicauca.isii.proyecto_api_rest_revision.domain;
+package co.edu.unicauca.isii.revision.modelo;
 
 import lombok.Setter;
 import lombok.Getter;

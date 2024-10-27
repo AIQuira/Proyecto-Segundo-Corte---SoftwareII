@@ -1,8 +1,8 @@
-package co.edu.unicauca.isii.proyecto_api_rest_revision.domain.repositorios;
+package co.edu.unicauca.isii.revision.repositorios;
 
 
-import co.edu.unicauca.isii.proyecto_api_rest_revision.domain.Articulo;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.servicios.ArticuloServiceImpl;
+import co.edu.unicauca.isii.revision.modelo.Articulo;
+import co.edu.unicauca.isii.revision.servicios.ArticuloServiceImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

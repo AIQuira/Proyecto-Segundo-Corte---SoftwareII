@@ -1,9 +1,9 @@
-package co.edu.unicauca.isii.proyecto_api_rest_revision;
+package revision;
 
-import co.edu.unicauca.isii.proyecto_api_rest_revision.domain.Autor;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.domain.Revisor;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.fachadaservicios.DTO.ArticuloDTO;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.servicios.ArticuloServiceImpl;
+import co.edu.unicauca.isii.revision.modelo.Autor;
+import co.edu.unicauca.isii.revision.modelo.Revisor;
+import co.edu.unicauca.isii.revision.fachadaservicios.DTO.ArticuloDTO;
+import co.edu.unicauca.isii.revision.servicios.ArticuloServiceImpl;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

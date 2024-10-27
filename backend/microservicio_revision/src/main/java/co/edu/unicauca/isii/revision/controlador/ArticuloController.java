@@ -1,9 +1,9 @@
-package co.edu.unicauca.isii.proyecto_api_rest_revision.controlador;
+package co.edu.unicauca.isii.revision.controlador;
 
-import co.edu.unicauca.isii.proyecto_api_rest_revision.domain.Autor;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.fachadaservicios.DTO.ArticuloDTO;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.fachadaservicios.DTO.CalificacionDTO;
-import co.edu.unicauca.isii.proyecto_api_rest_revision.servicios.ArticuloServiceImpl;
+import co.edu.unicauca.isii.revision.modelo.Autor;
+import co.edu.unicauca.isii.revision.fachadaservicios.DTO.ArticuloDTO;
+import co.edu.unicauca.isii.revision.fachadaservicios.DTO.CalificacionDTO;
+import co.edu.unicauca.isii.revision.servicios.ArticuloServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

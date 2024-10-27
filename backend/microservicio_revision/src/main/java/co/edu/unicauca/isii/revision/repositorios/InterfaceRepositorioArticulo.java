@@ -1,6 +1,6 @@
-package co.edu.unicauca.isii.proyecto_api_rest_revision.domain.repositorios;
+package co.edu.unicauca.isii.revision.repositorios;
 
-import co.edu.unicauca.isii.proyecto_api_rest_revision.domain.Articulo;
+import co.edu.unicauca.isii.revision.modelo.Articulo;
 import java.util.List;
 
 public interface InterfaceRepositorioArticulo {
