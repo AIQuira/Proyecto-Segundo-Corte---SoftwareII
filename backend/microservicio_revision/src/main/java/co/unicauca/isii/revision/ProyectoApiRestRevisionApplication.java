@@ -1,4 +1,4 @@
-package revision;
+package co.unicauca.isii.revision;
 
 import co.edu.unicauca.isii.revision.modelo.Autor;
 import co.edu.unicauca.isii.revision.modelo.Revisor;
