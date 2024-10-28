@@ -53,6 +53,7 @@ public class RevisionServiceImpl implements IRevisionService {
 
         ArticuloDTO articulo = this.servicioConsumirObtencionArticulo.consultarArticuloDTO(revision.getArticuloId());
 
+        articulo.setEstado(revision.getEstado().toString());
         articulo.setCalificacionTitulo(revision.getCalificacionTitulo());
         articulo.setCalificacionDescripcion(revision.getCalificacionDescripcion());
         articulo.setCalificacionResumen(revision.getCalificacionResumen());

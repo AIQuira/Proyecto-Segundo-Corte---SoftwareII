@@ -97,22 +97,37 @@ public class ArticuloRepository {
 
     private void cargarArticulos() {
 
+        ArrayList<RevisorEntity> listaRevisores1 = new ArrayList<>();
+        RevisorEntity objRevisor1 = new RevisorEntity();
+        objRevisor1.setCedula(12345);
+        listaRevisores1.add(objRevisor1);
+
+        ArrayList<RevisorEntity> listaRevisores2 = new ArrayList<>();
+        RevisorEntity objRevisor2 = new RevisorEntity();
+        objRevisor2.setCedula(67890);
+        listaRevisores2.add(objRevisor2);
+
+        ArrayList<RevisorEntity> listaRevisores3 = new ArrayList<>();
+        RevisorEntity objRevisor3 = new RevisorEntity();
+        objRevisor3.setCedula(11223);
+        listaRevisores3.add(objRevisor3);
+
         ArticuloEntity objArticulo1 = new ArticuloEntity(1, "Inteligencia Artificial en Educación",
-                "Este artículo explora el uso de IA en el ámbito educativo", "Resumen prueba", "IA, Educación, Tecnología");
+                "Este artículo explora el uso de IA en el ámbito educativo", "Resumen prueba", "IA, Educación, Tecnología", listaRevisores1);
         this.listaDeArticulos.add(objArticulo1);
 
         ArticuloEntity objArticulo2 = new ArticuloEntity(2, "Desarrollo Sostenible y Energía Renovable",
                 "Análisis del impacto de las energías renovables en el desarrollo sostenible", "Resumen prueba",
-                "Energía, Sostenibilidad, Medio Ambiente");
+                "Energía, Sostenibilidad, Medio Ambiente", listaRevisores2);
         this.listaDeArticulos.add(objArticulo2);
 
         ArticuloEntity objArticulo3 = new ArticuloEntity(3, "Big Data y Análisis de Datos",
-                "Estudio sobre la recolección y análisis de grandes volúmenes de datos", "Resumen prueba", "Big Data, Análisis, Datos");
+                "Estudio sobre la recolección y análisis de grandes volúmenes de datos", "Resumen prueba", "Big Data, Análisis, Datos", listaRevisores3);
         this.listaDeArticulos.add(objArticulo3);
 
-        ArticuloEntity objArticulo4 = new ArticuloEntity(3, "Ciberseguridad en la Era Digital",
+        ArticuloEntity objArticulo4 = new ArticuloEntity(4, "Ciberseguridad en la Era Digital",
                 "Propuestas para mejorar la seguridad digital en la actualidad", "Resumen prueba",
-                "Ciberseguridad, Tecnología, Seguridad");
+                "Ciberseguridad, Tecnología, Seguridad", listaRevisores1);
         this.listaDeArticulos.add(objArticulo4);
     }
 }
