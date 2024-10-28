@@ -15,7 +15,11 @@ public class RevisionRepository {
         cargarRevisiones();
     }
 
-    // Método para guardar una revisión
+    /**
+     * @brief Método para guardar una revisión
+     * @param revision
+     * @return revisión guardada
+     */
     public RevisionEntity guardarRevision(RevisionEntity revision) {
         System.out.println("Invocando a guardar revisión de un artículo");
         RevisionEntity objRevision = null;
@@ -25,13 +29,20 @@ public class RevisionRepository {
         return objRevision;
     }
 
-    // Método para listar todas las revisiones
+    /**
+     * @brief Método para listar todas las revisiones
+     * @return lista de revisiones
+     */
     public ArrayList<RevisionEntity> listarRevisiones() {
         System.out.println("Invocando a listar revisiones");
         return this.listaRevisiones;
     }
 
-    // Método para buscar una revisión por su ID
+    /**
+     * @brief Método para buscar una revisión por ID
+     * @param id
+     * @return revisión encontrada o null si no encuentra la revisión
+     */
     public RevisionEntity buscarPorId(Integer id) {
         System.out.println("Invocando a buscar revisión por ID");
         for (RevisionEntity revision : this.listaRevisiones) {
@@ -42,7 +53,9 @@ public class RevisionRepository {
         return null; // Retorna null si no encuentra la revisión
     }
 
-    // Método para cargar datos de prueba
+    /**
+     * @brief Método para buscar una revisión por ID del artículo
+     */
     private void cargarRevisiones() {
         RevisionEntity revision1 = new RevisionEntity(1, 1, 1, Estado.RECIBIDO, 0, 0, 0, 0, "Revisión inicial");
         this.listaRevisiones.add(revision1);

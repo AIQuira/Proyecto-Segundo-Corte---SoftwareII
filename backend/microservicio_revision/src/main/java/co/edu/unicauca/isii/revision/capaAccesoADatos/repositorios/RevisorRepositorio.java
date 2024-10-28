@@ -16,6 +16,11 @@ public class RevisorRepositorio {
         cargarRevisores();
     }
 
+    /**
+     * @brief Método para grabar revisores
+     * @param revisor
+     * @return revisor guardado
+     */
     private void cargarRevisores() {
         RevisorEntity revisor1 = new RevisorEntity(12345, "Carlos Pérez", "carlosperez@gmail.com", "123456", 3124567890L, 2, "Doctorado en Computación");
         this.listaRevisores.add(revisor1);
