@@ -1,7 +1,7 @@
-package co.edu.unicauca.isii.revision.fachadaservicios.mapper;
+package co.edu.unicauca.isii.revision.fachadaServicios.mapper;
 
-import co.edu.unicauca.isii.revision.modelo.Articulo;
-import co.edu.unicauca.isii.revision.fachadaservicios.DTO.ArticuloDTO;
+import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.ArticuloEntity;
+import co.edu.unicauca.isii.revision.fachadaServicios.DTO.ArticuloDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -13,6 +13,6 @@ import org.mapstruct.factory.Mappers;
 public interface ArticuloMapper {
     ArticuloMapper INSTANCE = Mappers.getMapper(ArticuloMapper.class);
 
-    ArticuloDTO toDto(Articulo articulo);
-    Articulo toEntity(ArticuloDTO articuloDTO);
+    ArticuloDTO toDto(ArticuloEntity articulo);
+    ArticuloEntity toEntity(ArticuloDTO articuloDTO);
 }

@@ -2,7 +2,7 @@ package co.edu.unicauca.isii.proyecto_api_rest_revision.consumidor;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.unicauca.isii.proyecto_api_rest_revision.fachadaservicios.DTO.ConferenceDTO;
+import co.edu.unicauca.isii.revision.fachadaServicios.DTO.ConferenceDTO;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 

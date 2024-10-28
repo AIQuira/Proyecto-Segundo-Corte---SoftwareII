@@ -1,10 +1,10 @@
-package co.edu.unicauca.isii.revision.servicios;
+package co.edu.unicauca.isii.revision.fachadaServicios.servicios;
 
-import co.edu.unicauca.isii.revision.modelo.Articulo;
-import co.edu.unicauca.isii.revision.modelo.Autor;
-import co.edu.unicauca.isii.revision.modelo.Revisor;
-import co.edu.unicauca.isii.revision.fachadaservicios.DTO.ArticuloDTO;
-import co.edu.unicauca.isii.revision.fachadaservicios.mapper.ArticuloMapper;
+import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.ArticuloEntity;
+import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.AutorEntity;
+import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.RevisorEntity;
+import co.edu.unicauca.isii.revision.fachadaServicios.DTO.ArticuloDTO;
+import co.edu.unicauca.isii.revision.fachadaServicios.mapper.ArticuloMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ import java.util.List;
  */
 @Service
 public class ArticuloServiceImpl {
-    private final List<Articulo> articulos = new ArrayList<>();
-    private final Revisor revisor;
+    private final List<ArticuloEntity> articulos = new ArrayList<>();
+    private final RevisorEntity revisor;
 
     /**
      * @brief Constructor de ArticuloServiceImpl.
      * @param revisor Una instancia de Revisor para calificar artículos.
      */
-    public ArticuloServiceImpl(Revisor revisor) {
+    public ArticuloServiceImpl(RevisorEntity revisor) {
         this.revisor = revisor;
     }
 
@@ -33,8 +33,8 @@ public class ArticuloServiceImpl {
      * @param articuloDTO Objeto de transferencia de datos del artículo.
      * @return El artículo enviado como un ArticuloDTO.
      */
-    public ArticuloDTO enviarArticulo(Autor autor, ArticuloDTO articuloDTO) {
-        Articulo articulo = ArticuloMapper.INSTANCE.toEntity(articuloDTO);
+    public ArticuloDTO enviarArticulo(AutorEntity autor, ArticuloDTO articuloDTO) {
+        ArticuloEntity articulo = ArticuloMapper.INSTANCE.toEntity(articuloDTO);
         articulos.add(articulo);
         autor.getListaArticulos().add(articulo); // Asocia el artículo con el autor
         return ArticuloMapper.INSTANCE.toDto(articulo);
@@ -50,7 +50,7 @@ public class ArticuloServiceImpl {
      */
     public void calificarArticulo(int indice, int calTitulo, int calDescripcion, int calResumen, int calKeyword) {
         if (indice >= 0 && indice < articulos.size()) {
-            Articulo articulo = articulos.get(indice);
+            ArticuloEntity articulo = articulos.get(indice);
             revisor.calificarArticulo(articulo, calTitulo, calDescripcion, calResumen, calKeyword);
         } else {
             throw new IllegalArgumentException("Índice de artículo inválido.");
@@ -63,7 +63,7 @@ public class ArticuloServiceImpl {
      */
     public List<ArticuloDTO> listarArticulos() {
         List<ArticuloDTO> listaDto = new ArrayList<>();
-        for (Articulo articulo : articulos) {
+        for (ArticuloEntity articulo : articulos) {
             listaDto.add(ArticuloMapper.INSTANCE.toDto(articulo));
         }
         return listaDto;

@@ -1,4 +1,4 @@
-package co.edu.unicauca.isii.revision.modelo;
+package co.edu.unicauca.isii.revision.capaAccesoADatos.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +11,7 @@ import lombok.Getter;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Articulo {
+public class ArticuloEntity {
     private int idArticulo;
     private String estado;
     private String titulo;
@@ -25,7 +24,7 @@ public class Articulo {
     private Integer calificacionKeyword;
 
     // Constructor sin calificaciones (para cuando el autor envía el artículo inicialmente)
-    public Articulo(String titulo, String descripcion, String resumen, String keyword) {
+    public ArticuloEntity(String titulo, String descripcion, String resumen, String keyword) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.resumen = resumen;

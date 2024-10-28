@@ -1,25 +1,26 @@
-package co.edu.unicauca.isii.revision.repositorios;
+package co.edu.unicauca.isii.revision.capaAccesoADatos.repositorios;
 
-import co.edu.unicauca.isii.revision.modelo.Articulo;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.ArticuloEntity;
+
 public class RepositorioArticuloMemoriaArrayList implements InterfaceRepositorioArticulo{
 
-    private ArrayList<Articulo> listaDeArticulos;
+    private ArrayList<ArticuloEntity> listaDeArticulos;
     
     public RepositorioArticuloMemoriaArrayList()
     {
         this.listaDeArticulos= new ArrayList();
     }
     @Override
-    public boolean almacenarArticulo(Articulo objArticulo) {
+    public boolean almacenarArticulo(ArticuloEntity objArticulo) {
         objArticulo.setIdArticulo(getCantidadArticulos());
        return this.listaDeArticulos.add(objArticulo);
     }
 
     @Override
-    public List<Articulo> listarArticulos() {
+    public List<ArticuloEntity> listarArticulos() {
         return this.listaDeArticulos;
     }
     
@@ -43,8 +44,8 @@ public class RepositorioArticuloMemoriaArrayList implements InterfaceRepositorio
     }
 
     @Override
-    public Articulo consultarArticulo(int idArticulo) {
-        Articulo objArticulo=null;
+    public ArticuloEntity consultarArticulo(int idArticulo) {
+        ArticuloEntity objArticulo=null;
         for (int i = 0; i < this.listaDeArticulos.size(); i++) {
             if(this.listaDeArticulos.get(i).getIdArticulo()==idArticulo)
             {
@@ -57,7 +58,7 @@ public class RepositorioArticuloMemoriaArrayList implements InterfaceRepositorio
     }
 
     @Override
-    public boolean actualizarArticulo(Articulo objArticulo) {
+    public boolean actualizarArticulo(ArticuloEntity objArticulo) {
         boolean bandera=false;
         for (int i = 0; i < this.listaDeArticulos.size(); i++) {
             if(this.listaDeArticulos.get(i).getIdArticulo()==objArticulo.getIdArticulo())

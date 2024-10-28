@@ -1,4 +1,4 @@
-package co.edu.unicauca.isii.revision.modelo;
+package co.edu.unicauca.isii.revision.capaAccesoADatos.modelo;
 
 public enum Estado {
     RECIBIDO, 

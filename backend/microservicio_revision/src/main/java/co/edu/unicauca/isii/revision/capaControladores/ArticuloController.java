@@ -1,9 +1,10 @@
-package co.edu.unicauca.isii.revision.controlador;
+package co.edu.unicauca.isii.revision.capaControladores;
 
 import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.AutorEntity;
+import co.edu.unicauca.isii.revision.fachadaServicios.servicios.ArticuloServiceImpl;
 import co.edu.unicauca.isii.revision.fachadaServicios.DTO.ArticuloDTO;
 import co.edu.unicauca.isii.revision.fachadaServicios.DTO.CalificacionDTO;
-import co.edu.unicauca.isii.revision.fachadaServicios.servicios.ArticuloServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package co.edu.unicauca.isii.revision.modelo;
+package co.edu.unicauca.isii.revision.capaAccesoADatos.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import lombok.Getter;
  * @class Revisor
  * @brief Representa un revisor que puede calificar artículos.
  */
-public class Revisor extends Persona {
+public class RevisorEntity extends Persona {
 
     private String tituloUniversitario;
 
@@ -28,7 +28,7 @@ public class Revisor extends Persona {
      * @param rol ID del rol del revisor.
      * @param tituloUniversitario Título académico del revisor.
      */
-    public Revisor(int cedula, String nombre, String correo, String password, int telefono, int rol, String tituloUniversitario) {
+    public RevisorEntity(int cedula, String nombre, String correo, String password, int telefono, int rol, String tituloUniversitario) {
         super(cedula, nombre, correo, password, telefono, rol);
         this.tituloUniversitario = tituloUniversitario;
     }
@@ -41,7 +41,7 @@ public class Revisor extends Persona {
      * @param calResumen Calificación para el resumen.
      * @param calKeyword Calificación para las palabras clave.
      */
-    public void calificarArticulo(Articulo articulo, Integer calTitulo, Integer calDescripcion, Integer calResumen, Integer calKeyword) {
+    public void calificarArticulo(ArticuloEntity articulo, Integer calTitulo, Integer calDescripcion, Integer calResumen, Integer calKeyword) {
         articulo.setCalificacionTitulo(calTitulo);
         articulo.setCalificacionDescripcion(calDescripcion);
         articulo.setCalificacionResumen(calResumen);

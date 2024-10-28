@@ -1,8 +1,9 @@
-package co.edu.unicauca.isii.revision.repositorios;
+package co.edu.unicauca.isii.revision.capaAccesoADatos.repositorios;
 
 
-import co.edu.unicauca.isii.revision.modelo.Articulo;
-import co.edu.unicauca.isii.revision.servicios.ArticuloServiceImpl;
+import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.ArticuloEntity;
+import co.edu.unicauca.isii.revision.fachadaServicios.servicios.ArticuloServiceImpl;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,7 +24,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
     }
 
     @Override
-    public boolean almacenarArticulo(Articulo objArticulo) {
+    public boolean almacenarArticulo(ArticuloEntity objArticulo) {
         try {
             if (objArticulo == null || objArticulo.getIdArticulo() < 0 || objArticulo.getTitulo().isBlank()) {
                 return false;
@@ -49,8 +50,8 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
     }
 
     @Override
-    public List<Articulo> listarArticulos() {
-        List<Articulo> articulos = new ArrayList<>();
+    public List<ArticuloEntity> listarArticulos() {
+        List<ArticuloEntity> articulos = new ArrayList<>();
         try {
             String sql = "SELECT id_trabajo, titulo, descripcion, resumen, keyword, estado FROM Trabajo;";
 
@@ -58,7 +59,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
             ResultSet rs = statement.executeQuery(sql);
 
             while (rs.next()) {
-                Articulo nuevoArticulo = new Articulo();
+                ArticuloEntity nuevoArticulo = new ArticuloEntity();
                 nuevoArticulo.setIdArticulo(rs.getInt("id_trabajo"));
                 nuevoArticulo.setTitulo(rs.getString("titulo"));
                 nuevoArticulo.setDescripcion("descripcion");
@@ -76,8 +77,8 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
     }
 
     @Override
-    public Articulo consultarArticulo(int idArticulo) {
-        Articulo objArticulo = null;
+    public ArticuloEntity consultarArticulo(int idArticulo) {
+        ArticuloEntity objArticulo = null;
         try {
             String sql = "SELECT * FROM Trabajo WHERE id_trabajo = ?;";
             PreparedStatement pStatement = connection.prepareStatement(sql);
@@ -87,7 +88,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
             ResultSet rs = pStatement.executeQuery();
 
             if (rs.next()){
-                objArticulo = new Articulo();
+                objArticulo = new ArticuloEntity();
                 objArticulo.setIdArticulo(rs.getInt("id_trabajo"));
                 objArticulo.setTitulo(rs.getString("titulo"));
                 objArticulo.setDescripcion(rs.getString("descripcion"));
@@ -104,7 +105,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
     }
 
     @Override
-    public boolean actualizarArticulo(Articulo objArticulo) {
+    public boolean actualizarArticulo(ArticuloEntity objArticulo) {
         boolean actualizado = false;
         try{
             String sql = "UPDATE Trabajo SET titulo = ?, descripcion = ?, resumen = ?, keyword = ?, estado = ? WHERE id_trabajo = ?";

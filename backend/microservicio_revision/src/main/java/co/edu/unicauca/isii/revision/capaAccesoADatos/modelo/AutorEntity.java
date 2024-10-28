@@ -1,4 +1,4 @@
-package co.edu.unicauca.isii.revision.modelo;
+package co.edu.unicauca.isii.revision.capaAccesoADatos.modelo;
 
 import java.util.List;
 import lombok.Setter;
@@ -11,9 +11,9 @@ import lombok.Getter;
  * @class Autor
  * @brief Representa un autor que puede enviar artículos para revisión.
  */
-public class Autor extends Persona{
+public class AutorEntity extends Persona{
     
-    private List<Articulo> listaArticulos;
+    private List<ArticuloEntity> listaArticulos;
 
     /**
      * @brief Constructor de la clase Autor.
@@ -24,7 +24,7 @@ public class Autor extends Persona{
      * @param telefono Número de teléfono del autor.
      * @param rol ID del rol del autor.
      */
-    public Autor(int cedula, String nombre, String correo, String password, int telefono, int rol) {
+    public AutorEntity(int cedula, String nombre, String correo, String password, int telefono, int rol) {
         super(cedula, nombre, correo, password, telefono, rol);
     }
 
@@ -32,7 +32,7 @@ public class Autor extends Persona{
      * @brief Obtiene la lista de artículos enviados por el autor.
      * @return Lista de artículos.
      */
-    public List<Articulo> getListaArticulos() {
+    public List<ArticuloEntity> getListaArticulos() {
         return listaArticulos;
     }
 
@@ -40,7 +40,7 @@ public class Autor extends Persona{
      * @brief Establece la lista de artículos enviados por el autor.
      * @param listaArticulos Lista de artículos a establecer.
      */
-    public void setListaArticulos(List<Articulo> listaArticulos) {
+    public void setListaArticulos(List<ArticuloEntity> listaArticulos) {
         this.listaArticulos = listaArticulos;
     }
     

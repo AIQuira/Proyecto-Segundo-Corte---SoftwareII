@@ -1,9 +1,10 @@
-package revision;
+package co.edu.unicauca.isii;
 
-import co.edu.unicauca.isii.revision.modelo.Autor;
-import co.edu.unicauca.isii.revision.modelo.Revisor;
-import co.edu.unicauca.isii.revision.fachadaservicios.DTO.ArticuloDTO;
-import co.edu.unicauca.isii.revision.servicios.ArticuloServiceImpl;
+import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.AutorEntity;
+import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.RevisorEntity;
+import co.edu.unicauca.isii.revision.fachadaServicios.servicios.ArticuloServiceImpl;
+import co.edu.unicauca.isii.revision.fachadaServicios.DTO.ArticuloDTO;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -11,10 +12,10 @@ public class ProyectoApiRestRevisionApplication {
     
     public static void main(String[] args) {
         // Crear un autor
-        Autor autor = new Autor(123, "Juan Pérez", "juan.perez@example.com", "password123", 123456789, 1);
+        AutorEntity autor = new AutorEntity(123, "Juan Pérez", "juan.perez@example.com", "password123", 123456789, 1);
 
         // Crear un revisor
-        Revisor revisor = new Revisor(456, "Maria García", "maria.garcia@example.com", "password456", 987654321, 2, "Lic. en Letras");
+        RevisorEntity revisor = new RevisorEntity(456, "Maria García", "maria.garcia@example.com", "password456", 987654321, 2, "Lic. en Letras");
 
         // Crear el servicio de artículos
         ArticuloServiceImpl articuloService = new ArticuloServiceImpl(revisor);

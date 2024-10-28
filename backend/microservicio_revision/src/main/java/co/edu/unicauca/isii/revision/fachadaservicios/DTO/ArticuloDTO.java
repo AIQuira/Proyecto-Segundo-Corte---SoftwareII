@@ -1,4 +1,4 @@
-package co.edu.unicauca.isii.revision.fachadaservicios.DTO;
+package co.edu.unicauca.isii.revision.fachadaServicios.DTO;
 
 import lombok.Data;
 import lombok.Setter;
