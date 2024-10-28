@@ -9,16 +9,14 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 @Service
 public class MessageConsumer {
 
-    @RabbitListener(queues = "temaarticulo.revision")
+    @RabbitListener(queues = "temacorreo")
     public void receiveMessage(ArticuloDTO objArticuloCreado) {
-        System.out.println("Datos de la conferencia");
+        System.out.println("Datos del articulo");
         System.out.println("Enviando correo electrónico");
-        System.out.println("Id: "+objArticuloCreado.getId());
-        System.out.println("Nombre: "+objArticuloCreado.getNombre());
-        System.out.println("lugar: "+objArticuloCreado.getLugar());
-        System.out.println("Fecha: "+objArticuloCreado.getFecha());
-        System.out.println("tema: "+objArticuloCreado.getTema());
-        System.out.println("descripcion: "+objArticuloCreado.getDescripcion());
-        System.out.println("contacto: "+objArticuloCreado.getContacto());         
+        System.out.println("Titulo: "+objArticuloCreado.gettitulo());
+        System.out.println("Descripcion: "+objArticuloCreado.getdescripcion());
+        System.out.println("Resumen: "+objArticuloCreado.getresumen());
+        System.out.println("Keyword: "+objArticuloCreado.getkeyword());
+        
     }
 }

@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ConferenciaApplication<conferencia>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.conferencia.ConferenciaApplication",
+            "projectName": "conferencia",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoApiRestRevisionApplication<revision>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.edu.unicauca.isii.proyecto_api_rest_revision.ProyectoApiRestRevisionApplication",
+            "projectName": "revision",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
