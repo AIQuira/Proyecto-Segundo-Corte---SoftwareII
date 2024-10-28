@@ -1,6 +1,6 @@
 package co.edu.unicauca.isii.revision.capaAccesoADatos.modelo;
 
-import java.util.List;
+//import java.util.List;
 import lombok.Setter;
 import lombok.Getter;
 

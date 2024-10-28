@@ -13,10 +13,10 @@ public class MessageConsumer {
     public void receiveMessage(ArticuloDTO objArticuloCreado) {
         System.out.println("Datos del articulo");
         System.out.println("Enviando correo electrónico");
-        System.out.println("Titulo: "+objArticuloCreado.gettitulo());
-        System.out.println("Descripcion: "+objArticuloCreado.getdescripcion());
-        System.out.println("Resumen: "+objArticuloCreado.getresumen());
-        System.out.println("Keyword: "+objArticuloCreado.getkeyword());
+        System.out.println("Titulo: "+objArticuloCreado.getTitulo());
+        System.out.println("Descripcion: "+objArticuloCreado.getDescripcion());
+        System.out.println("Resumen: "+objArticuloCreado.getResumen());
+        System.out.println("Keyword: "+objArticuloCreado.getKeyword());
         
     }
 }

@@ -7,15 +7,14 @@ import lombok.Getter;
 @Data
 @Getter
 @Setter
-
-
 public class ArticuloDTO {
+    private int idArticulo;
+    private String estado;
     private String titulo;
     private String descripcion;
     private String resumen;
     private String keyword;
-    	
-    public ArticuloDTO(){
 
-    }
+    public ArticuloDTO() {
+    } 
 }

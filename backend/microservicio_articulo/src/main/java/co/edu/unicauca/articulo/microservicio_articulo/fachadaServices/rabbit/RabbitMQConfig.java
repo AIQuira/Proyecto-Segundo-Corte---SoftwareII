@@ -14,7 +14,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 public class RabbitMQConfig {
     @Bean
     public Queue myQueue() {
-        return new Queue("temaCorreo", true);
+        return new Queue("temacorreo", true);
     }
 
     @Bean
