@@ -2,6 +2,7 @@ package co.edu.unicauca.mvc.vistas.evaluar;
 
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 import co.edu.unicauca.isii.services.ArticuloServices;
+import co.edu.unicauca.isii.services.RevisionServices;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.modelos.Revisor;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 public class panelArticuloEspecifico extends javax.swing.JPanel {
 
     private ArticuloServices objServicioArticulos;
+    private RevisionServices objServicioRevision;
     private Articulo articulo; // Variable para almacenar el artículo que se cargará
 
     /**
@@ -352,7 +354,7 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
     private void btnEvaluarConfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarConfeActionPerformed
         String nombreConferencia = txtNomConfe.getText(); // Obtenemos el nombre de la conferencia
         GUIOpciones gui = (GUIOpciones) getTopLevelAncestor(); // Obtenemos la referencia de la ventana principal
-        gui.mostrarPanel(new panelEvaluacion(nombreConferencia)); // Mostramos el panel de evaluación con el nombre de la conferencia
+        gui.mostrarPanel(new panelEvaluacion(nombreConferencia, objServicioRevision)); // Mostramos el panel de evaluación con el nombre de la conferencia
     }//GEN-LAST:event_btnEvaluarConfeActionPerformed
 
 

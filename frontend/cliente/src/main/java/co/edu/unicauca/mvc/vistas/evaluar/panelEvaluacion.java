@@ -1,10 +1,13 @@
 package co.edu.unicauca.mvc.vistas.evaluar;
 
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
+import co.edu.unicauca.isii.services.RevisionServices;
+import co.edu.unicauca.mvc.modelos.Revision;
 import co.edu.unicauca.mvc.utilidades.Utilidades;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,14 +15,15 @@ import java.awt.GridBagLayout;
  */
 public class panelEvaluacion extends javax.swing.JPanel {
 
-    //private ServicioAlmacenamientoArticulos objServicioArticulos;
+    private RevisionServices objServicioRevision;
     /**
      * Creates new form panelEvaluacion
      * @param nombreConferencia
      */
-    public panelEvaluacion(String nombreConferencia) {
+    public panelEvaluacion(String nombreConferencia, RevisionServices objServicioRevision) {
         initComponents();
         txtNomConfeE.setText(nombreConferencia);
+        this.objServicioRevision = objServicioRevision;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -269,6 +273,28 @@ public class panelEvaluacion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        Integer calificacionTitulo, calificacionDescripcion, calificacionResumen, calificacionKeyword;
+        String comentarios;
+        
+        calificacionDescripcion = Integer.valueOf((String) this.selDescripcion.getSelectedItem());
+        calificacionResumen = Integer.valueOf((String) this.selResumen.getSelectedItem());
+        calificacionKeyword = Integer.valueOf((String) this.selPalabras.getSelectedItem()) ;
+        comentarios = this.txtObservaciones.getText();
+        
+        Revision objRevision = new Revision();
+        objRevision.setCalificacionDescripcion(calificacionDescripcion);
+        objRevision.setCalificacionKeyword(calificacionKeyword);
+        objRevision.setCalificacionResumen(calificacionResumen);
+        objRevision.setComentarios(comentarios);
+        
+        Revision objRevisionRegistrada = this.objServicioRevision.registrarRevision(objRevision);
+        
+        if(objRevisionRegistrada != null){
+            JOptionPane.showMessageDialog(this, "Revisión guardada exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error al registrar la revisión", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
         if (selResumen.getSelectedItem().equals("Seleccione una opción") ||
             selPalabras.getSelectedItem().equals("Seleccione una opción") ||
             selDescripcion.getSelectedItem().equals("Seleccione una opción") ||
