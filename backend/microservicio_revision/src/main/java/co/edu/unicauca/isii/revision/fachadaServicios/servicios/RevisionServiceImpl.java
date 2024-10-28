@@ -9,16 +9,19 @@ import org.springframework.stereotype.Service;
 import co.edu.unicauca.isii.revision.capaAccesoADatos.modelo.RevisionEntity;
 import co.edu.unicauca.isii.revision.capaAccesoADatos.repositorios.RevisionRepository;
 import co.edu.unicauca.isii.revision.fachadaServicios.DTO.RevisionDTO;
+import co.edu.unicauca.isii.revision.fachadaServicios.DTO.RevisorConArticulos.ArticuloDTO;
 
 @Service
 public class RevisionServiceImpl implements IRevisionService {
     
     private RevisionRepository revisionRepository;
+    private ArticuloService servicioConsumirObtencioArticulo;
 
     private ModelMapper modelMapper;
 
-    public RevisionServiceImpl(RevisionRepository revisionRepository, ModelMapper modelMapper) {
+    public RevisionServiceImpl(RevisionRepository revisionRepository, ArticuloService servicioConsumirObtencioArticulo, ModelMapper modelMapper) {
         this.revisionRepository = revisionRepository;
+        this.servicioConsumirObtencioArticulo = servicioConsumirObtencioArticulo;
         this.modelMapper = modelMapper;
     }
 
@@ -36,5 +39,11 @@ public class RevisionServiceImpl implements IRevisionService {
         List<RevisionDTO> listaRevisionesDTO = this.modelMapper.map(listaRevisiones, new TypeToken<List<RevisionDTO>>(){
         }.getType());
         return listaRevisionesDTO;
+    }
+
+    @Override
+    public List<ArticuloDTO> listarArticulosDeRevisor(Integer idRevisor) {
+        List<ArticuloDTO> listaArticulos = this.servicioConsumirObtencioArticulo.listarArticulosDeRevisor(idRevisor);
+        return listaArticulos;
     }
 }
