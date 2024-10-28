@@ -1,7 +1,6 @@
 package co.edu.unicauca.isii.revision.fachadaServicios.servicios;
 
 import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
@@ -13,15 +12,14 @@ import co.edu.unicauca.isii.revision.fachadaServicios.DTO.RevisorConArticulos.Ar
 
 @Service
 public class RevisionServiceImpl implements IRevisionService {
-    
-    private RevisionRepository revisionRepository;
-    private ArticuloService servicioConsumirObtencionArticulo;
 
+    private RevisionRepository revisionRepository;
+    private ArticuloService articuloService; // Servicio para interactuar con el microservicio de artículos
     private ModelMapper modelMapper;
 
-    public RevisionServiceImpl(RevisionRepository revisionRepository, ArticuloService servicioConsumirObtencionArticulo, ModelMapper modelMapper) {
+    public RevisionServiceImpl(RevisionRepository revisionRepository, ArticuloService articuloService, ModelMapper modelMapper) {
         this.revisionRepository = revisionRepository;
-        this.servicioConsumirObtencionArticulo = servicioConsumirObtencionArticulo;
+        this.articuloService = articuloService;
         this.modelMapper = modelMapper;
     }
 
@@ -30,16 +28,13 @@ public class RevisionServiceImpl implements IRevisionService {
         calificarArticulo(revision);
         RevisionEntity revisionEntity = this.modelMapper.map(revision, RevisionEntity.class);
         RevisionEntity objRevisionEntity = this.revisionRepository.guardarRevision(revisionEntity);
-        RevisionDTO revisionDTO = this.modelMapper.map(objRevisionEntity, RevisionDTO.class);
-        return revisionDTO;
+        return this.modelMapper.map(objRevisionEntity, RevisionDTO.class);
     }
 
     @Override
     public List<RevisionDTO> listarRevisiones() {
         List<RevisionEntity> listaRevisiones = this.revisionRepository.listarRevisiones();
-        List<RevisionDTO> listaRevisionesDTO = this.modelMapper.map(listaRevisiones, new TypeToken<List<RevisionDTO>>(){
-        }.getType());
-        return listaRevisionesDTO;
+        return this.modelMapper.map(listaRevisiones, new TypeToken<List<RevisionDTO>>() {}.getType());
     }
 
     @Override

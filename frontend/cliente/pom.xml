@@ -91,7 +91,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source> <!-- Cambiado a 21 -->
         <maven.compiler.target>18</maven.compiler.target> <!-- Cambiado a 21 -->
-        <exec.mainClass>co.edu.unicauca.mvc.Aplicacion_capas_mvc</exec.mainClass>
+        <exec.mainClass>co.edu.unicauca.mvc.test.Test</exec.mainClass>
     </properties>
 
 <repositories>
