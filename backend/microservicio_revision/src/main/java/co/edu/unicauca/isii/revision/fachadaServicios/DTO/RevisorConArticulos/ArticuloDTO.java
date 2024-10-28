@@ -1,17 +1,13 @@
-package co.edu.unicauca.isii.revision.capaAccesoADatos.modelo;
+package co.edu.unicauca.isii.revision.fachadaServicios.DTO.RevisorConArticulos;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class ArticuloEntity {
+public class ArticuloDTO {
     private int idArticulo;
     private String estado;
     private String titulo;
@@ -23,8 +19,13 @@ public class ArticuloEntity {
     private Integer calificacionResumen;
     private Integer calificacionKeyword;
 
+
+    public ArticuloDTO(){
+
+    }
+    
     // Constructor sin calificaciones (para cuando el autor envía el artículo inicialmente)
-    public ArticuloEntity(String titulo, String descripcion, String resumen, String keyword) {
+    public ArticuloDTO(String titulo, String descripcion, String resumen, String keyword) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.resumen = resumen;

@@ -13,7 +13,7 @@ import lombok.Getter;
  */
 public class AutorEntity extends Persona{
     
-    private List<ArticuloEntity> listaArticulos;
+    //private List<ArticuloEntity> listaArticulos;
 
     /**
      * @brief Constructor de la clase Autor.
@@ -24,7 +24,7 @@ public class AutorEntity extends Persona{
      * @param telefono Número de teléfono del autor.
      * @param rol ID del rol del autor.
      */
-    public AutorEntity(int cedula, String nombre, String correo, String password, int telefono, int rol) {
+    public AutorEntity(int cedula, String nombre, String correo, String password, Long telefono, int rol) {
         super(cedula, nombre, correo, password, telefono, rol);
     }
 
@@ -32,16 +32,16 @@ public class AutorEntity extends Persona{
      * @brief Obtiene la lista de artículos enviados por el autor.
      * @return Lista de artículos.
      */
-    public List<ArticuloEntity> getListaArticulos() {
+    /*public List<ArticuloEntity> getListaArticulos() {
         return listaArticulos;
-    }
+    }*/
 
     /**
      * @brief Establece la lista de artículos enviados por el autor.
      * @param listaArticulos Lista de artículos a establecer.
      */
-    public void setListaArticulos(List<ArticuloEntity> listaArticulos) {
+    /*public void setListaArticulos(List<ArticuloEntity> listaArticulos) {
         this.listaArticulos = listaArticulos;
-    }
+    }*/
     
 }

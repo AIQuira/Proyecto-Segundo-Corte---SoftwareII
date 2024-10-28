@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.isii.revision.fachadaServicios.DTO.RevisionDTO;
+import co.edu.unicauca.isii.revision.fachadaServicios.DTO.RevisorConArticulos.ArticuloDTO;
 import co.edu.unicauca.isii.revision.fachadaServicios.servicios.IRevisionService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -31,5 +33,8 @@ public class RevisionRestController {
         return this.revisionService.listarRevisiones();
     }
     
-
+    @GetMapping("/revision/articulos/{idRevisor}")
+    public List<ArticuloDTO> listarArticulosDeRevisor(@PathVariable Integer idRevisor) {
+        return this.revisionService.listarArticulosDeRevisor(idRevisor);
+    }
 }

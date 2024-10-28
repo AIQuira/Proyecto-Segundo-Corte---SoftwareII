@@ -28,7 +28,7 @@ public class RevisorEntity extends Persona {
      * @param rol ID del rol del revisor.
      * @param tituloUniversitario Título académico del revisor.
      */
-    public RevisorEntity(int cedula, String nombre, String correo, String password, int telefono, int rol, String tituloUniversitario) {
+    public RevisorEntity(int cedula, String nombre, String correo, String password, Long telefono, int rol, String tituloUniversitario) {
         super(cedula, nombre, correo, password, telefono, rol);
         this.tituloUniversitario = tituloUniversitario;
     }
@@ -41,10 +41,10 @@ public class RevisorEntity extends Persona {
      * @param calResumen Calificación para el resumen.
      * @param calKeyword Calificación para las palabras clave.
      */
-    public void calificarArticulo(ArticuloEntity articulo, Integer calTitulo, Integer calDescripcion, Integer calResumen, Integer calKeyword) {
+    /*public void calificarArticulo(ArticuloEntity articulo, Integer calTitulo, Integer calDescripcion, Integer calResumen, Integer calKeyword) {
         articulo.setCalificacionTitulo(calTitulo);
         articulo.setCalificacionDescripcion(calDescripcion);
         articulo.setCalificacionResumen(calResumen);
         articulo.setCalificacionKeyword(calKeyword);
-    }
+    }*/
 }
