@@ -1,6 +1,7 @@
 package co.edu.unicauca.mvc.vistas.evaluar;
 
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
+import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.vistas.evaluar.panelEvaluacion;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
@@ -11,7 +12,7 @@ import co.edu.unicauca.mvc.vistas.GUIOpciones;
  */
 public class panelArticuloEspecifico extends javax.swing.JPanel {
 
-//    private ServicioAlmacenamientoArticulos objServicioArticulos;
+    private ArticuloServices objServicioArticulos;
     private Articulo articulo; // Variable para almacenar el artículo que se cargará
 
     /**
@@ -19,12 +20,12 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
      */
 
     
-//    public panelArticuloEspecifico(ServicioAlmacenamientoArticulos objServicioArticulos, int idArticulo) {
-//        initComponents();
-//        this.objServicioArticulos = objServicioArticulos;
-//        this.articulo = objServicioArticulos.consultarArticulo(idArticulo); // Consulta el artículo desde la base de datos
-//        cargarDatosArticulo(); // Llama al método para cargar los datos en los labels
-//    }
+    public panelArticuloEspecifico(ArticuloServices objServicioArticulos, int idArticulo) {
+        initComponents();
+        this.objServicioArticulos = objServicioArticulos;
+        this.articulo = objServicioArticulos.consultarArticulo(idArticulo); // Consulta el artículo desde la base de datos
+        cargarDatosArticulo(); // Llama al método para cargar los datos en los labels
+    }
 
     panelArticuloEspecifico(String nombre) {
          txtNomConfe.setText(nombre); 

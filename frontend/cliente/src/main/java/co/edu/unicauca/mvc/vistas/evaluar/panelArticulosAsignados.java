@@ -1,6 +1,7 @@
 package co.edu.unicauca.mvc.vistas.evaluar;
 
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
+import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.modelos.Conferencia;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
@@ -21,20 +22,20 @@ import javax.swing.JButton;
  */
 public class panelArticulosAsignados extends javax.swing.JPanel {
 
-    //private final ServicioAlmacenamientoArticulos objServicioArticulos;
+    private final ArticuloServices objServicioArticulos;
     /**
      * Creates new form Principal
      * @param objServicioArticulos
      */
-//    public panelArticulosAsignados(ServicioAlmacenamientoArticulos objServicioArticulos) {
-//        initComponents();
-//        this.objServicioArticulos = objServicioArticulos;
-//        mostrarConferencias();
-//    }
+    public panelArticulosAsignados(ArticuloServices objServicioArticulos) {
+        initComponents();
+        this.objServicioArticulos = objServicioArticulos;
+        mostrarConferencias();
+    }
 
     // Obtención de conferencias y agrega los botones dinámicamente
     private void mostrarConferencias() {
-//        List<Articulo> articulos = objServicioArticulos.listarArticulos();
+        List<Articulo> listaArticulos = objServicioArticulos.listarArticulos();
 
         jPanel2.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -43,43 +44,43 @@ public class panelArticulosAsignados extends javax.swing.JPanel {
         gbc.insets = new Insets(10, 0, 10, 0);  // Espacio entre los botones
         gbc.anchor = GridBagConstraints.CENTER; // Centramos los botones
 
-//        for (Articulo articulo : articulos) {
-//            JButton btnConferencia = new JButton(articulo.getTitulo());
-//            espacioConfes.add(btnConferencia); 
-//            
-//            // Establecemos el tamaño y el estilo de los botones
-//            btnConferencia.setPreferredSize(new Dimension(200, 40)); // Tamaño más pequeño para los botones
-//            btnConferencia.setBackground(Color.WHITE);
-//            btnConferencia.setOpaque(true);
-//            btnConferencia.setBorder(BorderFactory.createLineBorder(new Color(143, 142, 142), 2, true)); // Borde redondeado
-//
-//            // Efecto hover para cambiar el color cuando el mouse está sobre el botón
-//            btnConferencia.addMouseListener(new java.awt.event.MouseAdapter() {
-//                @Override
-//                public void mouseEntered(java.awt.event.MouseEvent evt) {
-//                    btnConferencia.setBackground(new Color(145, 173, 180)); // Cambia color al pasar mouse
-//                    btnConferencia.setForeground(Color.WHITE); // Cambia color del texto
-//                }
-//
-//                @Override
-//                public void mouseExited(java.awt.event.MouseEvent evt) {
-//                    btnConferencia.setBackground(Color.WHITE); // Vuelve al color blanco
-//                    btnConferencia.setForeground(Color.BLACK); // Vuelve el texto al color negro
-//                }
-//            });
-//
-//            // Añadimos el botón al panel
-//            jPanel2.add(btnConferencia, gbc);
-//
-//            // Añadimos acción para redirigir al panel de detalles específicos
-//            btnConferencia.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    GUIOpciones gui = (GUIOpciones) getTopLevelAncestor(); // Obtenemos la referencia de la ventana principal
-//                    gui.mostrarPanel(new panelArticuloEspecifico(objServicioArticulos, articulo.getIdArticulo()));
-//                }
-//            });
-//        }
+        for (Articulo articulo : listaArticulos) {
+            JButton btnConferencia = new JButton(articulo.getTitulo());
+            espacioConfes.add(btnConferencia); 
+            
+            // Establecemos el tamaño y el estilo de los botones
+            btnConferencia.setPreferredSize(new Dimension(200, 40)); // Tamaño más pequeño para los botones
+            btnConferencia.setBackground(Color.WHITE);
+            btnConferencia.setOpaque(true);
+            btnConferencia.setBorder(BorderFactory.createLineBorder(new Color(143, 142, 142), 2, true)); // Borde redondeado
+
+            // Efecto hover para cambiar el color cuando el mouse está sobre el botón
+            btnConferencia.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    btnConferencia.setBackground(new Color(145, 173, 180)); // Cambia color al pasar mouse
+                    btnConferencia.setForeground(Color.WHITE); // Cambia color del texto
+                }
+
+                @Override
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    btnConferencia.setBackground(Color.WHITE); // Vuelve al color blanco
+                    btnConferencia.setForeground(Color.BLACK); // Vuelve el texto al color negro
+                }
+            });
+
+            // Añadimos el botón al panel
+            jPanel2.add(btnConferencia, gbc);
+
+            // Añadimos acción para redirigir al panel de detalles específicos
+            btnConferencia.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    GUIOpciones gui = (GUIOpciones) getTopLevelAncestor(); // Obtenemos la referencia de la ventana principal
+                    gui.mostrarPanel(new panelArticuloEspecifico(objServicioArticulos, articulo.getIdArticulo()));
+                }
+            });
+        }
 
         // Refrescamos el panel
         jPanel2.revalidate();

@@ -16,12 +16,12 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 /**
  * Servicio para manejar las acciones específicas del revisor sobre los artículos.
  */
-public class RevisorServices {
+public class RevisionServices {
     private String endPoint;
     private Client client;
 
-    public RevisorServices() {
-        this.endPoint = "http://localhost:8085/api/revisores";
+    public RevisionServices() {
+        this.endPoint = "http://localhost:2110/api/revision";
         this.client = ClientBuilder.newClient().register(new JacksonFeature());
     }
 

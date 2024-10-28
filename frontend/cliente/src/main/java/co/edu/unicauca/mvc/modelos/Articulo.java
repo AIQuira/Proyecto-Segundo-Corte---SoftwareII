@@ -1,13 +1,32 @@
 package co.edu.unicauca.mvc.modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Articulo {
    private int idArticulo;
-   private String titulo;
-   private String resumen;
-   private String keyword;
-   private String estado;
-   
-   private Conferencia objConferencia;
+    private String estado;
+    private String titulo;
+    private String descripcion;
+    private String resumen;
+    private String keyword;
+    private Integer calificacionTitulo;
+    private Integer calificacionDescripcion;
+    private Integer calificacionResumen;
+    private Integer calificacionKeyword;
+    private List<Revisor> listaRevisores;
+    
+    private Conferencia objConferencia;
+
+    // Constructor sin calificaciones (para cuando el autor envía el artículo inicialmente) 
+    public Articulo(int idArticulo, String titulo, String descripcion, String resumen, String keyword, List<Revisor> listaRevisores) {
+        this.idArticulo = idArticulo;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.resumen = resumen;
+        this.keyword = keyword;
+        this.listaRevisores = (listaRevisores != null) ? listaRevisores : new ArrayList<>();
+    }
 
    public Articulo()
    {
@@ -68,6 +87,54 @@ public class Articulo {
 
     public Conferencia getObjConferencia() {
         return objConferencia;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Integer getCalificacionTitulo() {
+        return calificacionTitulo;
+    }
+
+    public void setCalificacionTitulo(Integer calificacionTitulo) {
+        this.calificacionTitulo = calificacionTitulo;
+    }
+
+    public Integer getCalificacionDescripcion() {
+        return calificacionDescripcion;
+    }
+
+    public void setCalificacionDescripcion(Integer calificacionDescripcion) {
+        this.calificacionDescripcion = calificacionDescripcion;
+    }
+
+    public Integer getCalificacionResumen() {
+        return calificacionResumen;
+    }
+
+    public void setCalificacionResumen(Integer calificacionResumen) {
+        this.calificacionResumen = calificacionResumen;
+    }
+
+    public Integer getCalificacionKeyword() {
+        return calificacionKeyword;
+    }
+
+    public void setCalificacionKeyword(Integer calificacionKeyword) {
+        this.calificacionKeyword = calificacionKeyword;
+    }
+
+    public List<Revisor> getListaRevisores() {
+        return listaRevisores;
+    }
+
+    public void setListaRevisores(List<Revisor> listaRevisores) {
+        this.listaRevisores = listaRevisores;
     }
 
 }

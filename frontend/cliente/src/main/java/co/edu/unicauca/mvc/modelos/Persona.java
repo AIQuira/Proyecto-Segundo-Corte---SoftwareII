@@ -8,6 +8,10 @@ public class Persona {
     private String password;
     private int telefono;
     private int rol;
+    
+    public Persona(){
+        
+    }
 
     public Persona(int cedula, String nombre, String correo, String password, int telefono, int rol) {
         this.cedula = cedula;

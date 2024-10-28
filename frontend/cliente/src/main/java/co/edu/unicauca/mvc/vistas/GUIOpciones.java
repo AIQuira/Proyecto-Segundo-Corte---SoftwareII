@@ -1,7 +1,6 @@
 package co.edu.unicauca.mvc.vistas;
 
-//import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
-//import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoConferencias;
+import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.mvc.vistas.evaluar.panelArticulosAsignados;
 import co.edu.unicauca.mvc.vistas.postular.panelSubirArticulo;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
@@ -19,14 +18,15 @@ public class GUIOpciones extends javax.swing.JFrame {
     private boolean barraVisible = true; // Inicialmente la barra es visible
     // Declaración de Timer para las animaciones
     private Timer timer;
-    //private ServicioAlmacenamientoArticulos objServicioArticulos;
+    private ArticuloServices objServicioArticulos;
     
     /**
      * Creates new form GUIOpcioness
      */
-    public GUIOpciones() {
+    public GUIOpciones(ArticuloServices objServicioArticulos) {
         initComponents();
-        mostrarPanel(new panelArticulosAsignados()); // Muestra un panel predeterminado
+        barraVisible = true;
+        this.objServicioArticulos = objServicioArticulos;
     }
 
     
@@ -255,24 +255,15 @@ public class GUIOpciones extends javax.swing.JFrame {
     
     private void btnPostular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostular1ActionPerformed
 
-        //mostrarPanel(new panelSubirArticulo(objServicioArticulos));
+        mostrarPanel(new panelSubirArticulo(objServicioArticulos));
     }//GEN-LAST:event_btnPostular1ActionPerformed
 
     private void btnEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarActionPerformed
         // TODO add your handling code here:
         //mostrarPanel(new panelArticulosAsignados(objServicioArticulos));
         //mostrarPanel(new panelSubirArticulo()); // Muestra el panel de subir artículo
-         mostrarPanel(new panelArticulosAsignados()); // Muestra el panel de artículos asignados
+         mostrarPanel(new panelArticulosAsignados(objServicioArticulos)); // Muestra el panel de artículos asignados
     }//GEN-LAST:event_btnEvaluarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        FlatMaterialLighterIJTheme.setup();
-        //</editor-fold>
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;

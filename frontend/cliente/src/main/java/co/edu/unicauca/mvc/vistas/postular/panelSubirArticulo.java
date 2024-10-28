@@ -1,6 +1,6 @@
 package co.edu.unicauca.mvc.vistas.postular;
 
-//import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
+import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import static co.edu.unicauca.mvc.utilidades.Funciones.verificarCampo;
 import javax.swing.JOptionPane;
@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  */
 public class panelSubirArticulo extends javax.swing.JPanel {
 
-//    private ServicioAlmacenamientoArticulos objServicioArticulos;
-//
-//    public panelSubirArticulo(ServicioAlmacenamientoArticulos objServicioArticulos) {
-//        initComponents();
-//        this.objServicioArticulos = objServicioArticulos;
-//    }
+    private ArticuloServices objServicioArticulos;
+
+    public panelSubirArticulo(ArticuloServices objServicioArticulos) {
+        initComponents();
+        this.objServicioArticulos = objServicioArticulos;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
