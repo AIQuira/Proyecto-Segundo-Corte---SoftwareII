@@ -33,12 +33,14 @@ public class Articulo {
        
    }
 
-    public Articulo( String titulo, String resumen, String keyword, String estado) {
+    public Articulo( String titulo, String resumen, String keyword, String estado, String descripcion) {
         this.titulo = titulo;
         this.resumen = resumen;
         this.keyword = keyword;
         this.estado = estado;
+        this.descripcion = descripcion;
     }
+    
 
     public int getIdArticulo() {
         return idArticulo;
