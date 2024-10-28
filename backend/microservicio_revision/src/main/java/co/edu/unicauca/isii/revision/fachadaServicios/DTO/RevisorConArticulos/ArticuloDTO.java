@@ -19,7 +19,6 @@ public class ArticuloDTO {
     private Integer calificacionResumen;
     private Integer calificacionKeyword;
 
-
     public ArticuloDTO(){
 
     }

@@ -16,7 +16,7 @@ public class Articulo {
     private Integer calificacionKeyword;
     private List<Revisor> listaRevisores;
     
-    private Conferencia objConferencia;
+    private Conferencia objConferencias;
 
     // Constructor sin calificaciones (para cuando el autor envía el artículo inicialmente) 
     public Articulo(int idArticulo, String titulo, String descripcion, String resumen, String keyword, List<Revisor> listaRevisores) {
@@ -58,7 +58,7 @@ public class Articulo {
 
     
     public void setObjConferencia(Conferencia objConferencia) {
-        this.objConferencia = objConferencia;
+        this.objConferencias = objConferencia;
     }
 
     public String getResumen() {
@@ -86,7 +86,7 @@ public class Articulo {
     }
 
     public Conferencia getObjConferencia() {
-        return objConferencia;
+        return objConferencias;
     }
 
     public String getDescripcion() {
