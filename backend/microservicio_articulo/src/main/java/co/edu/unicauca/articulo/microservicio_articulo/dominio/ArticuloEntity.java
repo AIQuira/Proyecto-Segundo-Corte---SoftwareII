@@ -1,5 +1,7 @@
 package co.edu.unicauca.articulo.microservicio_articulo.dominio;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,9 +20,11 @@ public class ArticuloEntity {
     private Integer calificacionDescripcion;
     private Integer calificacionResumen;
     private Integer calificacionKeyword;
+    private List<RevisorEntity> listaRevisores;
 
     // Constructor sin calificaciones (para cuando el autor envía el artículo inicialmente)
-    public ArticuloEntity(String titulo, String descripcion, String resumen, String keyword) {
+    public ArticuloEntity(int idArticulo, String titulo, String descripcion, String resumen, String keyword) {
+        this.idArticulo = idArticulo;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.resumen = resumen;

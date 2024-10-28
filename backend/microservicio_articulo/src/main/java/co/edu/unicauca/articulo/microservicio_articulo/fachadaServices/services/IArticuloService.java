@@ -20,4 +20,6 @@ public interface IArticuloService {
 	public List<ConferenceDTO> ListarConferenciasDeArticulo(Integer idArticulo);
 
 	public ArticuloConConferenciasDTO listarDatosArticuloConSusConferencias(Integer idArticulo) ;
+
+	public List<ArticuloDTO> listarArticulosDeRevisor (Integer idRevisor);
 }

@@ -43,7 +43,7 @@ public class ArticuloService {
     }
 
     public List<ArticuloDTO> listarArticulosDeRevisor(Integer idRevisor) {
-        String url = "http://localhost:2504/api/articulo/revisor/" + idRevisor;
+        String url = "http://localhost:2504/api/articulos/revisor/" + idRevisor;
 
         Mono<ArticuloDTO[]> response = this.webClientBuilder.build()
             .get()

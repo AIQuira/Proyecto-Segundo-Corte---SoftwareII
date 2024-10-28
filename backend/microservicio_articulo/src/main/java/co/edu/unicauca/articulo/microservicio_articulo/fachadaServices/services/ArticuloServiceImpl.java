@@ -79,4 +79,12 @@ public class ArticuloServiceImpl implements IArticuloService{
 		
 		return objArticulo;
 	}
+
+	@Override
+	public List<ArticuloDTO> listarArticulosDeRevisor(Integer idRevisor) {
+		List<ArticuloEntity> articulosEntity = this.servicioAccesoBaseDatos.listarArticulosDeRevisor(idRevisor);
+		List<ArticuloDTO> articulosDTO = this.modelMapper.map(articulosEntity, new TypeToken<List<ArticuloDTO>>() {
+		}.getType());
+		return articulosDTO;
+	}
 }

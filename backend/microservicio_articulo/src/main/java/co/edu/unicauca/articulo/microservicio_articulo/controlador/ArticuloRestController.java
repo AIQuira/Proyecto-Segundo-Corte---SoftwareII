@@ -75,4 +75,9 @@ public class ArticuloRestController {
         }
         return bandera;
     }
+
+    @GetMapping("/articulos/revisor/{idRevisor}")
+    public List<ArticuloDTO> listarArticulosPorRevisor(@PathVariable Integer idRevisor) {
+        return articuloService.listarArticulosDeRevisor(idRevisor);
+    }
 }
