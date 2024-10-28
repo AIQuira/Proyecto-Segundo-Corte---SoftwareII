@@ -1,33 +1,41 @@
 package co.edu.unicauca.isii.services;
 
 import co.edu.unicauca.mvc.modelos.Articulo;
-import 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.core.MediaType;
 import org.glassfish.jersey.jackson.JacksonFeature;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 /**
  *
  * @author earea
  */
+
+/**
+ * Servicio para interactuar con los artículos mediante REST.
+ */
 public class ArticuloServices {
     private String endPoint;
-    private Articulo objArticuloPeticiones;
-    
-    public ArticuloServices){
-        this.endPoint = "http://localhost:8085/api/revisores";
-        this.objArticuloPeticiones = ArticuloBuilder.newRevisor().register(new JacksonFeature());
+    private Client client;
+
+    public ArticuloServices() {
+        this.endPoint = "http://localhost:8085/api/articulos";
+        this.client = ClientBuilder.newClient().register(new JacksonFeature());
     }
-    
-    public Articulo consultarArticulo(Integer id){
-        Articulo objArticulo = null;
-        WebTarget target = this.objArticuloPeticiones.target(this.endPoint+"/"+id);
-        Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
-        objArticulo = objPeticion.get(Cliente.class):
-        return objArticulo;
+
+    // Método para consultar un artículo específico por ID
+    public Articulo consultarArticulo(Integer id) {
+        WebTarget target = client.target(this.endPoint).path(String.valueOf(id));
+        Invocation.Builder objPeticion = target.request(MediaType.APPLICATION_JSON);
+        return objPeticion.get(Articulo.class);
+    }
+
+    // Método para listar todos los artículos
+    public Articulo[] listarArticulos() {
+        WebTarget target = client.target(this.endPoint);
+        Invocation.Builder objPeticion = target.request(MediaType.APPLICATION_JSON);
+        return objPeticion.get(Articulo[].class);
     }
 }
