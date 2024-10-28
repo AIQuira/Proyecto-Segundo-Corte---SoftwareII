@@ -10,3 +10,4 @@ backend/node_modules/
 backend/dist/
 backend/*.log
 /backend/microservicio_revision/target/
+/frontend/cliente/target/
