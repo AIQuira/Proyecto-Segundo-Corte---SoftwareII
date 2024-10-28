@@ -24,18 +24,18 @@ public class GUIOpciones extends javax.swing.JFrame {
     /**
      * Creates new form GUIOpcioness
      */
-//    public GUIOpciones(ServicioAlmacenamientoArticulos objServicioArticulos) {
-//        initComponents();
-//        barraVisible = true;
-//        this.objServicioArticulos = objServicioArticulos;
-//    }
+    public GUIOpciones() {
+        initComponents();
+        mostrarPanel(new panelArticulosAsignados()); // Muestra un panel predeterminado
+    }
+
     
 //    private void initStyles(){
 //        lConferencias.putClientProperty( "FlatLaf.styleClass", "h1" );
 //        lConferencias.putClientProperty("FlatLaf.style", "front:18 $light.font");
 //        lConferencias.setForeground(Color.black);
 //    }
-    
+//    
     public void mostrarPanel(JPanel p) {
     p.setSize(620, 400);  // Asegúrate de que el tamaño sea correcto para tu layout
     p.setLocation(0, 0);
@@ -261,6 +261,8 @@ public class GUIOpciones extends javax.swing.JFrame {
     private void btnEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarActionPerformed
         // TODO add your handling code here:
         //mostrarPanel(new panelArticulosAsignados(objServicioArticulos));
+        //mostrarPanel(new panelSubirArticulo()); // Muestra el panel de subir artículo
+         mostrarPanel(new panelArticulosAsignados()); // Muestra el panel de artículos asignados
     }//GEN-LAST:event_btnEvaluarActionPerformed
 
     /**
