@@ -39,9 +39,11 @@ public class RevisionServiceImpl implements IRevisionService {
 
     @Override
     public List<ArticuloDTO> listarArticulosDeRevisor(Integer idRevisor) {
-        return this.articuloService.listarArticulosDeRevisor(idRevisor);
+        List<ArticuloDTO> listaArticulos = this.servicioConsumirObtencionArticulo.listarArticulosDeRevisor(idRevisor);
+        return listaArticulos;
     }
 
+<<<<<<< HEAD
     @Override
     public boolean calificarArticulo(Integer id, int calificacion) {
         ArticuloDTO articulo = this.articuloService.consultarArticuloDTO(id);
@@ -51,5 +53,21 @@ public class RevisionServiceImpl implements IRevisionService {
             return true;
         }
         return false;
+=======
+    public RevisionDTO calificarArticulo (RevisionDTO revision) {
+        System.out.println("Invocando a calificar un artículo");
+
+        ArticuloDTO articulo = this.servicioConsumirObtencionArticulo.consultarArticuloDTO(revision.getArticuloId());
+
+        articulo.setEstado(revision.getEstado().toString());
+        articulo.setCalificacionTitulo(revision.getCalificacionTitulo());
+        articulo.setCalificacionDescripcion(revision.getCalificacionDescripcion());
+        articulo.setCalificacionResumen(revision.getCalificacionResumen());
+        articulo.setCalificacionKeyword(revision.getCalificacionKeyword());
+
+        this.servicioConsumirObtencionArticulo.actualizarArticuloDTO(articulo, articulo.getIdArticulo());
+
+        return revision;
+>>>>>>> 9e54f5ffcd6640b4740cd9a6f75036e6bc32e8aa
     }
 }
