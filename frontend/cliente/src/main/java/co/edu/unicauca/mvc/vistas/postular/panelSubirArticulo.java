@@ -177,7 +177,7 @@ public class panelSubirArticulo extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String titulo, resumen, palabrasClave;
-        boolean bandera;
+        //boolean bandera;
 
         titulo = this.jTextFieldTitulo.getText();
         resumen = this.jTextFieldResumen.getText();
@@ -186,35 +186,17 @@ public class panelSubirArticulo extends javax.swing.JPanel {
         Articulo objArticulo = new Articulo(titulo, resumen, palabrasClave, "En revision");
         objArticulo.setIdArticulo(1);
 
-        //bandera = this.objServicioArticulos.almacenarArticulo(objArticulo);
+        Articulo objArticuloRegistrado = this.objServicioArticulos.registrarArticulo(objArticulo);
 
         if(!verificarCampo(titulo) || !verificarCampo(resumen) || !verificarCampo(palabrasClave)){
             return;
         }
         
-//        if (bandera == true) {
-//            JOptionPane.showMessageDialog(this, "Artículo subido exitosamente. En espera de revisión", "Información", JOptionPane.INFORMATION_MESSAGE);
-
-//            try {
-                // Inicializar el EmailSenderPluginManager
-//                String basePath = "src/main/resources/plugins/";// Especifica la ruta donde está tu archivo plugin.properties
-//                EmailSenderPluginManager.init(basePath);
-//
-//                // Obtener el plugin para Hotmail (o el servicio de correo que estés usando)
-//                ISendEmail emailPlugin = EmailSenderPluginManager.getInstance().getEmailPlugin("h");
-
-//                if (emailPlugin != null) {
-//                    emailPlugin.sendEmail("thaliaepe@hotmail.com", "carolt12345", "proyectosoftwareii@hotmail.com");
-//                } else {
-//                    System.out.println("No se encontró el plugin para el servicio de correo especificado.");
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Ha ocurrido un error al recibir el artículo. Por favor, vuelva a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
+        if (objArticuloRegistrado != null) {
+            JOptionPane.showMessageDialog(this, "Artículo subido exitosamente. En espera de revisión", "Información", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error al recibir el artículo. Por favor, vuelva a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

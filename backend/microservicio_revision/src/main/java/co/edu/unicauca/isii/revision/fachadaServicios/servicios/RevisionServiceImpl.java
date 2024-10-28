@@ -14,12 +14,12 @@ import co.edu.unicauca.isii.revision.fachadaServicios.DTO.RevisorConArticulos.Ar
 public class RevisionServiceImpl implements IRevisionService {
 
     private RevisionRepository revisionRepository;
-    private ArticuloService articuloService; // Servicio para interactuar con el microservicio de artículos
+    private ArticuloService servicioConsumirObtencionArticulo; // Servicio para interactuar con el microservicio de artículos
     private ModelMapper modelMapper;
 
-    public RevisionServiceImpl(RevisionRepository revisionRepository, ArticuloService articuloService, ModelMapper modelMapper) {
+    public RevisionServiceImpl(RevisionRepository revisionRepository, ArticuloService servicioConsumirObtencionArticulo, ModelMapper modelMapper) {
         this.revisionRepository = revisionRepository;
-        this.articuloService = articuloService;
+        this.servicioConsumirObtencionArticulo = servicioConsumirObtencionArticulo;
         this.modelMapper = modelMapper;
     }
 
@@ -43,17 +43,6 @@ public class RevisionServiceImpl implements IRevisionService {
         return listaArticulos;
     }
 
-<<<<<<< HEAD
-    @Override
-    public boolean calificarArticulo(Integer id, int calificacion) {
-        ArticuloDTO articulo = this.articuloService.consultarArticuloDTO(id);
-        if (articulo != null) {
-            articulo.setCalificacion(calificacion);
-            this.articuloService.actualizarArticuloDTO(articulo, id);
-            return true;
-        }
-        return false;
-=======
     public RevisionDTO calificarArticulo (RevisionDTO revision) {
         System.out.println("Invocando a calificar un artículo");
 
@@ -68,6 +57,5 @@ public class RevisionServiceImpl implements IRevisionService {
         this.servicioConsumirObtencionArticulo.actualizarArticuloDTO(articulo, articulo.getIdArticulo());
 
         return revision;
->>>>>>> 9e54f5ffcd6640b4740cd9a6f75036e6bc32e8aa
     }
 }
