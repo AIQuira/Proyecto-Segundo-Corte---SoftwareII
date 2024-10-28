@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 //import co.edu.unicauca.isii.revision.fachadaServicios.DTO.ConferenciaDTO;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+//import org.springframework.amqp.rabbit.annotation.RabbitListener;
 
 @Service
 public class MessageConsumer {
