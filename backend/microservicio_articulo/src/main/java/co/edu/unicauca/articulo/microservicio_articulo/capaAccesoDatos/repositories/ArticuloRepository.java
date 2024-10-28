@@ -3,8 +3,11 @@ package co.edu.unicauca.articulo.microservicio_articulo.capaAccesoDatos.reposito
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import co.edu.unicauca.articulo.microservicio_articulo.dominio.ArticuloEntity;
 
+@Repository
 public class ArticuloRepository {
     private int pos;
     private ArrayList<ArticuloEntity> listaDeArticulos;
@@ -78,23 +81,22 @@ public class ArticuloRepository {
 
     private void cargarArticulos() {
 
-        ArticuloEntity objArticulo1 = new ArticuloEntity(1, "Inteligencia Artificial en Educación",
-                "Este artículo explora el uso de IA en el ámbito educativo", "IA, Educación, Tecnología", "Publicado");
+        ArticuloEntity objArticulo1 = new ArticuloEntity("Inteligencia Artificial en Educación",
+                "Este artículo explora el uso de IA en el ámbito educativo", "Resumen prueba", "IA, Educación, Tecnología");
         this.listaDeArticulos.add(objArticulo1);
 
-        ArticuloEntity objArticulo2 = new ArticuloEntity(2, "Desarrollo Sostenible y Energía Renovable",
-                "Análisis del impacto de las energías renovables en el desarrollo sostenible",
-                "Energía, Sostenibilidad, Medio Ambiente", "Borrador");
+        ArticuloEntity objArticulo2 = new ArticuloEntity("Desarrollo Sostenible y Energía Renovable",
+                "Análisis del impacto de las energías renovables en el desarrollo sostenible", "Resumen prueba",
+                "Energía, Sostenibilidad, Medio Ambiente");
         this.listaDeArticulos.add(objArticulo2);
 
-        ArticuloEntity objArticulo3 = new ArticuloEntity(3, "Big Data y Análisis de Datos",
-                "Estudio sobre la recolección y análisis de grandes volúmenes de datos", "Big Data, Análisis, Datos",
-                "Revisión");
+        ArticuloEntity objArticulo3 = new ArticuloEntity("Big Data y Análisis de Datos",
+                "Estudio sobre la recolección y análisis de grandes volúmenes de datos", "Resumen prueba", "Big Data, Análisis, Datos");
         this.listaDeArticulos.add(objArticulo3);
 
-        ArticuloEntity objArticulo4 = new ArticuloEntity(4, "Ciberseguridad en la Era Digital",
-                "Propuestas para mejorar la seguridad digital en la actualidad",
-                "Ciberseguridad, Tecnología, Seguridad", "Publicado");
+        ArticuloEntity objArticulo4 = new ArticuloEntity("Ciberseguridad en la Era Digital",
+                "Propuestas para mejorar la seguridad digital en la actualidad", "Resumen prueba",
+                "Ciberseguridad, Tecnología, Seguridad");
         this.listaDeArticulos.add(objArticulo4);
     }
 }
