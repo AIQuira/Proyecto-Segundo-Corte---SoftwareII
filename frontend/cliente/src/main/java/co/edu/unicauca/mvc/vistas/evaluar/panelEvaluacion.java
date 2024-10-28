@@ -71,7 +71,6 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
         txtResumen3.setText("Objetivo general");
 
-        selObjetivo.setBackground(new java.awt.Color(255, 255, 255));
         selObjetivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -80,9 +79,9 @@ public class panelEvaluacion extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtResumen3, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(txtResumen3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(197, 197, 197)
-                .addComponent(selObjetivo, 0, 158, Short.MAX_VALUE)
+                .addComponent(selObjetivo, 0, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -95,7 +94,6 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
         txtResumen5.setText("Resultados");
 
-        selResultados.setBackground(new java.awt.Color(255, 255, 255));
         selResultados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -104,9 +102,9 @@ public class panelEvaluacion extends javax.swing.JPanel {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtResumen5, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(txtResumen5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(197, 197, 197)
-                .addComponent(selResultados, 0, 158, Short.MAX_VALUE)
+                .addComponent(selResultados, 0, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -119,7 +117,6 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
         txtResumen8.setText("Palabras clave");
 
-        selPalabras.setBackground(new java.awt.Color(255, 255, 255));
         selPalabras.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -128,9 +125,9 @@ public class panelEvaluacion extends javax.swing.JPanel {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtResumen8, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(txtResumen8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(197, 197, 197)
-                .addComponent(selPalabras, 0, 158, Short.MAX_VALUE)
+                .addComponent(selPalabras, 0, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -143,8 +140,12 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
         txtResumen9.setText("Resumen");
 
-        selResumen.setBackground(new java.awt.Color(255, 255, 255));
         selResumen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
+        selResumen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selResumenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -152,9 +153,9 @@ public class panelEvaluacion extends javax.swing.JPanel {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtResumen9, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(txtResumen9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(197, 197, 197)
-                .addComponent(selResumen, 0, 158, Short.MAX_VALUE)
+                .addComponent(selResumen, 0, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -167,7 +168,6 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
         txtResumen11.setText("Descripción");
 
-        selDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         selDescripcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -176,9 +176,9 @@ public class panelEvaluacion extends javax.swing.JPanel {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtResumen11, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(txtResumen11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(197, 197, 197)
-                .addComponent(selDescripcion, 0, 158, Short.MAX_VALUE)
+                .addComponent(selDescripcion, 0, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
@@ -187,7 +187,6 @@ public class panelEvaluacion extends javax.swing.JPanel {
             .addComponent(selDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        txtObservaciones.setBackground(new java.awt.Color(255, 255, 255));
         txtObservaciones.setColumns(20);
         txtObservaciones.setRows(5);
         txtObservaciones.setText("Escribir observación");
@@ -222,7 +221,7 @@ public class panelEvaluacion extends javax.swing.JPanel {
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(297, 297, 297)
-                .addComponent(txtNomConfeE, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                .addComponent(txtNomConfeE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(242, 242, 242))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(314, 314, 314)
@@ -287,6 +286,10 @@ public class panelEvaluacion extends javax.swing.JPanel {
             //gui.mostrarPanel(new panelArticulosAsignados(objServicioArticulos)); // Regresar al panel inicial o cualquier otro que elijas
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
+
+    private void selResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selResumenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selResumenActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
