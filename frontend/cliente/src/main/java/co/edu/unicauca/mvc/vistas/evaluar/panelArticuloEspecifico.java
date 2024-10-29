@@ -1,6 +1,5 @@
 package co.edu.unicauca.mvc.vistas.evaluar;
 
-//import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.RevisionServices;
 import co.edu.unicauca.mvc.modelos.Articulo;
@@ -22,50 +21,74 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
      * Creates new form panelConferenciaEspecifica
      * @param objServicioArticulos
      * @param idArticulo
+     * @param objServicioRevision
      */
 
-    
-    public panelArticuloEspecifico(ArticuloServices objServicioArticulos, int idArticulo) {
+    public panelArticuloEspecifico(ArticuloServices objServicioArticulos, int idArticulo, RevisionServices objServicioRevision) {
         initComponents();
         this.objServicioArticulos = objServicioArticulos;
-        this.articulo = objServicioArticulos.consultarArticulo(idArticulo); // Consulta el artículo desde la base de datos
-        cargarDatosArticulo(); // Llama al método para cargar los datos en los labels
+        this.objServicioRevision = objServicioRevision;
+        cargarArticulo(idArticulo);
     }
 
     panelArticuloEspecifico(String nombre) {
-         txtNomConfe.setText(nombre); 
+        initComponents();
+        txtNomConfe.setText(nombre); 
+    }
+    
+    private void cargarArticulo (int idArticulo){
+        this.articulo = objServicioArticulos.consultarArticulo(idArticulo);
+        cargarDatosArticulo();
     }
 
     private void cargarDatosArticulo() {
-        if (articulo != null) {
-            txtNomConfe.setText(articulo.getTitulo());  // Asignamos el título del artículo
-            esperaDescripcion.setText(articulo.getResumen());  // Asignamos la descripción (resumen)
-            esperaKeywords.setText(articulo.getKeyword());  // Asignamos las keywords
-            esperaResumen.setText(articulo.getResumen());  // Asignamos el resumen completo
-        } else {
-            // Si el artículo no existe, mostramos mensajes por defecto
-            txtNomConfe.setText("Artículo no encontrado");
-            esperaDescripcion.setText("Descripción no disponible");
-            esperaKeywords.setText("Keywords no disponibles");
-            esperaResumen.setText("Resumen no disponible");
-            
-            // Calificaciones del artículo
-            calTutulo.setText(articulo.getCalificacionTitulo() != null ? String.valueOf(articulo.getCalificacionTitulo()) : "-");
-            calDescri.setText(articulo.getCalificacionDescripcion() != null ? String.valueOf(articulo.getCalificacionDescripcion()) : "-");
-            calResume.setText(articulo.getCalificacionResumen() != null ? String.valueOf(articulo.getCalificacionResumen()) : "-");
-            calKeyW.setText(articulo.getCalificacionKeyword() != null ? String.valueOf(articulo.getCalificacionKeyword()) : "-");
-
-            // Información adicional
-            showEstado.setText(articulo.getEstado() != null ? articulo.getEstado() : "-");
-            // Revisión (mostrar nombres de los revisores si existen)
-            if (articulo.getListaRevisores() != null && !articulo.getListaRevisores().isEmpty()) {
-                String nombresRevisores = articulo.getListaRevisores().stream()
-                                                   .map(Revisor::getNombre) 
-                                                   .collect(Collectors.joining(", "));
-                showRevisores.setText(nombresRevisores);
-            } else {showRevisores.setText("-");}
+        if (articulo == null) {
+            mostrarDatosArticuloNoDisponible();
+            return;
         }
+        
+        txtNomConfe.setText(articulo.getTitulo());
+        esperaDescripcion.setText(articulo.getDescripcion());
+        esperaKeywords.setText(articulo.getKeyword());
+        esperaResumen.setText(articulo.getResumen());
+
+        // Calificaciones del artículo
+        calTutulo.setText(obtenerCalificacion(articulo.getCalificacionTitulo()));
+        calDescripcion.setText(obtenerCalificacion(articulo.getCalificacionDescripcion()));
+        calResumen.setText(obtenerCalificacion(articulo.getCalificacionResumen()));
+        calKeyW.setText(obtenerCalificacion(articulo.getCalificacionKeyword()));
+
+        // Estado y revisores
+        showEstado.setText(articulo.getEstado() != null ? articulo.getEstado() : "-");
+        showRevisores.setText(obtenerNombresRevisores());
     }
+
+    private void mostrarDatosArticuloNoDisponible() {
+        txtNomConfe.setText("Artículo no encontrado");
+        esperaDescripcion.setText("Descripción no disponible");
+        esperaKeywords.setText("Keywords no disponibles");
+        esperaResumen.setText("Resumen no disponible");
+        calTutulo.setText("-");
+        calDescripcion.setText("-");
+        calResumen.setText("-");
+        calKeyW.setText("-");
+        showEstado.setText("-");
+        showRevisores.setText("-");
+    }
+    
+    private String obtenerCalificacion(Integer calificacion) {
+        return calificacion != null ? String.valueOf(calificacion) : "-";
+    }
+
+    private String obtenerNombresRevisores() {
+        if (articulo.getListaRevisores() == null || articulo.getListaRevisores().isEmpty()) {
+            return "-";
+        }
+        return articulo.getListaRevisores().stream()
+                      .map(Revisor::getNombre)
+                      .collect(Collectors.joining(", "));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,8 +114,8 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         calTutulo = new javax.swing.JLabel();
-        calDescri = new javax.swing.JLabel();
-        calResume = new javax.swing.JLabel();
+        calDescripcion = new javax.swing.JLabel();
+        calResumen = new javax.swing.JLabel();
         calKeyW = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -184,11 +207,11 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
         calTutulo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         calTutulo.setText("-");
 
-        calDescri.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        calDescri.setText("-");
+        calDescripcion.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        calDescripcion.setText("-");
 
-        calResume.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        calResume.setText("-");
+        calResumen.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        calResumen.setText("-");
 
         calKeyW.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         calKeyW.setText("-");
@@ -214,11 +237,11 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(calDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(calDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(calResume, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(calResumen, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -230,11 +253,11 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(calDescri))
+                    .addComponent(calDescripcion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(calResume))
+                    .addComponent(calResumen))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -354,15 +377,15 @@ public class panelArticuloEspecifico extends javax.swing.JPanel {
     private void btnEvaluarConfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarConfeActionPerformed
         String nombreConferencia = txtNomConfe.getText(); // Obtenemos el nombre de la conferencia
         GUIOpciones gui = (GUIOpciones) getTopLevelAncestor(); // Obtenemos la referencia de la ventana principal
-        gui.mostrarPanel(new panelEvaluacion(nombreConferencia, objServicioRevision)); // Mostramos el panel de evaluación con el nombre de la conferencia
+        gui.mostrarPanel(new panelEvaluacion(nombreConferencia, objServicioRevision, objServicioArticulos, articulo.getIdArticulo())); // Mostramos el panel de evaluación con el nombre de la conferencia
     }//GEN-LAST:event_btnEvaluarConfeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEvaluarConfe;
-    private javax.swing.JLabel calDescri;
+    private javax.swing.JLabel calDescripcion;
     private javax.swing.JLabel calKeyW;
-    private javax.swing.JLabel calResume;
+    private javax.swing.JLabel calResumen;
     private javax.swing.JLabel calTutulo;
     private javax.swing.JLabel esperaDescripcion;
     private javax.swing.JLabel esperaKeywords;

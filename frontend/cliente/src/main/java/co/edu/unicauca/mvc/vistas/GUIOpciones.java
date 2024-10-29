@@ -1,6 +1,7 @@
 package co.edu.unicauca.mvc.vistas;
 
 import co.edu.unicauca.isii.services.ArticuloServices;
+import co.edu.unicauca.isii.services.RevisionServices;
 import co.edu.unicauca.mvc.vistas.evaluar.panelArticulosAsignados;
 import co.edu.unicauca.mvc.vistas.postular.panelSubirArticulo;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
@@ -19,14 +20,16 @@ public class GUIOpciones extends javax.swing.JFrame {
     // Declaración de Timer para las animaciones
     private Timer timer;
     private ArticuloServices objServicioArticulos;
+    private RevisionServices objServicioRevision;
     
     /**
      * Creates new form GUIOpcioness
      */
-    public GUIOpciones(ArticuloServices objServicioArticulos) {
+    public GUIOpciones(ArticuloServices objServicioArticulos, RevisionServices objServicioRevision) {
         initComponents();
         barraVisible = true;
         this.objServicioArticulos = objServicioArticulos;
+        this.objServicioRevision = objServicioRevision;
     }
 
     
@@ -262,7 +265,7 @@ public class GUIOpciones extends javax.swing.JFrame {
         // TODO add your handling code here:
         //mostrarPanel(new panelArticulosAsignados(objServicioArticulos));
         //mostrarPanel(new panelSubirArticulo()); // Muestra el panel de subir artículo
-         mostrarPanel(new panelArticulosAsignados(objServicioArticulos)); // Muestra el panel de artículos asignados
+         mostrarPanel(new panelArticulosAsignados(objServicioArticulos, objServicioRevision)); // Muestra el panel de artículos asignados
     }//GEN-LAST:event_btnEvaluarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

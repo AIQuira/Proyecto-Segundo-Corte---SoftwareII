@@ -2,6 +2,7 @@ package co.edu.unicauca.mvc.vistas.evaluar;
 
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 import co.edu.unicauca.isii.services.ArticuloServices;
+import co.edu.unicauca.isii.services.RevisionServices;
 import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.modelos.Conferencia;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
@@ -23,13 +24,15 @@ import javax.swing.JButton;
 public class panelArticulosAsignados extends javax.swing.JPanel {
 
     private final ArticuloServices objServicioArticulos;
+    private RevisionServices objServicioRevision;
     /**
      * Creates new form Principal
      * @param objServicioArticulos
      */
-    public panelArticulosAsignados(ArticuloServices objServicioArticulos) {
+    public panelArticulosAsignados(ArticuloServices objServicioArticulos, RevisionServices objServicioRevision) {
         initComponents();
         this.objServicioArticulos = objServicioArticulos;
+        this.objServicioRevision = objServicioRevision;
         mostrarConferencias();
     }
 
@@ -77,7 +80,7 @@ public class panelArticulosAsignados extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     GUIOpciones gui = (GUIOpciones) getTopLevelAncestor(); // Obtenemos la referencia de la ventana principal
-                    gui.mostrarPanel(new panelArticuloEspecifico(objServicioArticulos, articulo.getIdArticulo()));
+                    gui.mostrarPanel(new panelArticuloEspecifico(objServicioArticulos, articulo.getIdArticulo(), objServicioRevision));
                 }
             });
         }

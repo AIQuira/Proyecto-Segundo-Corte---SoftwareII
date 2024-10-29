@@ -1,7 +1,9 @@
 package co.edu.unicauca.mvc.vistas.evaluar;
 
 //import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
+import co.edu.unicauca.isii.services.ArticuloServices;
 import co.edu.unicauca.isii.services.RevisionServices;
+import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.modelos.Revision;
 import co.edu.unicauca.mvc.utilidades.Utilidades;
 import co.edu.unicauca.mvc.vistas.GUIOpciones;
@@ -16,14 +18,19 @@ import javax.swing.JOptionPane;
 public class panelEvaluacion extends javax.swing.JPanel {
 
     private RevisionServices objServicioRevision;
+    private ArticuloServices objServicioArticulos;
+    private Articulo articulo;
     /**
      * Creates new form panelEvaluacion
      * @param nombreConferencia
+     * @param objServicioRevision
      */
-    public panelEvaluacion(String nombreConferencia, RevisionServices objServicioRevision) {
+    public panelEvaluacion(String nombreConferencia, RevisionServices objServicioRevision, ArticuloServices objServicioArticulos, int idArticulo) {
         initComponents();
         txtNomConfeE.setText(nombreConferencia);
         this.objServicioRevision = objServicioRevision;
+        this.objServicioArticulos = objServicioArticulos;
+        this.articulo = objServicioArticulos.consultarArticulo(idArticulo);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,8 +49,8 @@ public class panelEvaluacion extends javax.swing.JPanel {
         txtResumen3 = new javax.swing.JLabel();
         selObjetivo = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
-        txtResumen5 = new javax.swing.JLabel();
-        selResultados = new javax.swing.JComboBox<>();
+        txtEstado = new javax.swing.JLabel();
+        selEstado = new javax.swing.JComboBox<>();
         jPanel10 = new javax.swing.JPanel();
         txtResumen8 = new javax.swing.JLabel();
         selPalabras = new javax.swing.JComboBox<>();
@@ -75,7 +82,7 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
         txtResumen3.setText("Objetivo general");
 
-        selObjetivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
+        selObjetivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0", "1", "2", "3", "4" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -96,9 +103,9 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtResumen5.setText("Resultados");
+        txtEstado.setText("Estado");
 
-        selResultados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
+        selEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "RECIBIDO", "EN_REVISION", "ACEPTADO", "RECHAZADO" }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -106,22 +113,22 @@ public class panelEvaluacion extends javax.swing.JPanel {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtResumen5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(197, 197, 197)
-                .addComponent(selResultados, 0, 0, Short.MAX_VALUE)
+                .addComponent(selEstado, 0, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtResumen5)
-            .addComponent(selResultados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtEstado)
+            .addComponent(selEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
         txtResumen8.setText("Palabras clave");
 
-        selPalabras.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
+        selPalabras.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0", "1", "2", "3", "4" }));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -144,7 +151,7 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
         txtResumen9.setText("Resumen");
 
-        selResumen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
+        selResumen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0", "1", "2", "3", "4" }));
         selResumen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selResumenActionPerformed(evt);
@@ -172,7 +179,7 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
         txtResumen11.setText("Descripción");
 
-        selDescripcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0 (Deficiente)", "1 (Insuficiente)", "2 (Sufuciente)", "3 (Bueno)", "4 (Excente)" }));
+        selDescripcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0", "1", "2", "3", "4" }));
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -274,18 +281,23 @@ public class panelEvaluacion extends javax.swing.JPanel {
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         Integer calificacionTitulo, calificacionDescripcion, calificacionResumen, calificacionKeyword;
-        String comentarios;
+        String comentarios, estado;
         
         calificacionDescripcion = Integer.valueOf((String) this.selDescripcion.getSelectedItem());
         calificacionResumen = Integer.valueOf((String) this.selResumen.getSelectedItem());
         calificacionKeyword = Integer.valueOf((String) this.selPalabras.getSelectedItem()) ;
+        estado = (String) this.selEstado.getSelectedItem();
         comentarios = this.txtObservaciones.getText();
         
         Revision objRevision = new Revision();
+        objRevision.setArticuloId(articulo.getIdArticulo());
+        objRevision.setEstado(estado);
         objRevision.setCalificacionDescripcion(calificacionDescripcion);
         objRevision.setCalificacionKeyword(calificacionKeyword);
         objRevision.setCalificacionResumen(calificacionResumen);
         objRevision.setComentarios(comentarios);
+        
+        System.out.println(objRevision.getArticuloId());
         
         Revision objRevisionRegistrada = this.objServicioRevision.registrarRevision(objRevision);
         
@@ -299,7 +311,7 @@ public class panelEvaluacion extends javax.swing.JPanel {
             selPalabras.getSelectedItem().equals("Seleccione una opción") ||
             selDescripcion.getSelectedItem().equals("Seleccione una opción") ||
             selObjetivo.getSelectedItem().equals("Seleccione una opción") ||
-            selResultados.getSelectedItem().equals("Seleccione una opción")) {
+            selEstado.getSelectedItem().equals("Seleccione una opción")) {
 
             // Muestra mensaje de error si falta alguna selección
             Utilidades.mensajeAdvertencia("Es obligatorio asignar una puntuación", "Error");
@@ -317,7 +329,6 @@ public class panelEvaluacion extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_selResumenActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;
     private javax.swing.JPanel jPanel1;
@@ -328,17 +339,17 @@ public class panelEvaluacion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> selDescripcion;
+    private javax.swing.JComboBox<String> selEstado;
     private javax.swing.JComboBox<String> selObjetivo;
     private javax.swing.JComboBox<String> selPalabras;
-    private javax.swing.JComboBox<String> selResultados;
     private javax.swing.JComboBox<String> selResumen;
     private javax.swing.JLabel txtCriterios;
+    private javax.swing.JLabel txtEstado;
     private javax.swing.JLabel txtNiveles;
     private javax.swing.JLabel txtNomConfeE;
     private javax.swing.JTextArea txtObservaciones;
     private javax.swing.JLabel txtResumen11;
     private javax.swing.JLabel txtResumen3;
-    private javax.swing.JLabel txtResumen5;
     private javax.swing.JLabel txtResumen8;
     private javax.swing.JLabel txtResumen9;
     // End of variables declaration//GEN-END:variables

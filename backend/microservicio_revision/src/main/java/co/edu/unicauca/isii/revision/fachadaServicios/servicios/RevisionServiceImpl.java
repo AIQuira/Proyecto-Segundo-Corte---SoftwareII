@@ -25,9 +25,9 @@ public class RevisionServiceImpl implements IRevisionService {
 
     @Override
     public RevisionDTO guardarRevision(RevisionDTO revision) {
-        calificarArticulo(revision);
         RevisionEntity revisionEntity = this.modelMapper.map(revision, RevisionEntity.class);
         RevisionEntity objRevisionEntity = this.revisionRepository.guardarRevision(revisionEntity);
+        calificarArticulo(revision);
         return this.modelMapper.map(objRevisionEntity, RevisionDTO.class);
     }
 
@@ -46,7 +46,10 @@ public class RevisionServiceImpl implements IRevisionService {
     public RevisionDTO calificarArticulo (RevisionDTO revision) {
         System.out.println("Invocando a calificar un artículo");
 
-        ArticuloDTO articulo = this.servicioConsumirObtencionArticulo.consultarArticuloDTO(revision.getArticuloId());
+        ArticuloDTO articulo = servicioConsumirObtencionArticulo.consultarArticuloDTO(revision.getArticuloId());
+        if (articulo == null) {
+            throw new IllegalArgumentException("El artículo con ID " + revision.getArticuloId() + " no existe.");
+        }
 
         articulo.setEstado(revision.getEstado().toString());
         articulo.setCalificacionTitulo(revision.getCalificacionTitulo());
@@ -54,7 +57,11 @@ public class RevisionServiceImpl implements IRevisionService {
         articulo.setCalificacionResumen(revision.getCalificacionResumen());
         articulo.setCalificacionKeyword(revision.getCalificacionKeyword());
 
-        this.servicioConsumirObtencionArticulo.actualizarArticuloDTO(articulo, articulo.getIdArticulo());
+        try {
+            this.servicioConsumirObtencionArticulo.actualizarArticuloDTO(articulo, articulo.getIdArticulo());
+        } catch (Exception e) {
+            throw new RuntimeException("Error al actualizar el artículo con ID " + articulo.getIdArticulo(), e);
+        }
 
         return revision;
     }
